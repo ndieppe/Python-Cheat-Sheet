@@ -868,20 +868,29 @@ def make_mult(f):  # makes a multiplier function for each given factor
 dbl = make_mult(2)
 print(dbl(5))  #-> : 10
 
-#* Function Decorators:
+#* Function Decorators (introducting Args and Kwargs):
 def add_sprinkles(func):
-    def wrapper(): #this is required so that this function is called everytime a decorated get)ice_cream is called not when the decorator appears
+    def wrapper(*args, **kwargs): #this is required so that this function is called everytime a decorated get)ice_cream is called not when the decorator appears
         print("*You add sprinkles*")
-        func() #this is the print statement "Here is your ice cream!"
+        func(*args, **kwargs) #this is the print statement "Here is your ice cream!"
     return wrapper
 
-@add_sprinkles
-def get_ice_cream():
-    print("Here is your ice cream!")
+def add_source(func):
+    def wrapper(*args, **kwargs): #args = arguments, kwargs = keyword arguments
+        print("*You add a source*")
+        func(*args, **kwargs) #this is done so any number of args and kwargs can be passed through
+    return wrapper
 
-if name == "__main__":
-    get_ice_cream()
+@add_sprinkles #this becomes shorthand for get_ice_cream = add_sprinkles(get_ice_cream)
+@add_source #more than one decorator can be applied
+def get_ice_cream(flavour): #this is brought in as a paramer "func" 
+    print(f"Here is your {flavour} ice cream!")
 
+if __name__ == "__main__":
+    get_ice_cream("vanilla")
+#-> *You add sprinkles*
+#-> *You add a source*
+#-> Here is your ice cream! (This is only printed once not twice)
 
 #* Method decorators:
 def method_decorator(func):
