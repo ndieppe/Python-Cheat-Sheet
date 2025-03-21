@@ -773,9 +773,43 @@ print("Nathan" in student1) #-> True
 print(student1["name"]) #-> Nathan
 print(student2["grade"]) #-> 8
 
+#* for more info on magic methods: https://www.geeksforgeeks.org/dunder-magic-methods-python/
 
+#!@property decorator:
+#This is a built in decorator in python that allows for a method to be accessed as an attribute. Gives a getter, setter and deleter method.
 
+#* Example of @property decorator:
+class Rectangle:
+    def __init__(self, length, width):
+        self._length = length #people use the _ prefix to make it clear that this is meant to be private variable
+        self._width = width #this is done because there is not way to actually malke a variable private in python
+
+    @property #this is the getter method
+    def width(self):
+        return f"{self._width:.1f}cm"
+
+    @property #without these properties these bits of code would never run
+    def length(self):
+        return f"{self._length:.1f}cm"
     
+    @width.setter #this is the setter method
+    def width(self, new_width):
+        if new_width < 0:
+            raise ValueError("Width must be positive") #raises an exception
+        else:
+            self._width = new_width
+
+    @length.setter #without these properties these bits of code would never run
+    def length(self, new_length):
+        if new_length < 0:
+            raise ValueError("Length must be positive")
+        else:
+            self._length = new_length
+
+rectangle = Rectangle(10, 5)
+
+print(rectangle._length) #-> 10.0cm
+print(rectangle._width) #-> 5.0cm
 
 #! Python decorators:
 # a decorator is a design pattern in Python that allows a user to add new functionality to an existing object without modifying its structure
@@ -853,11 +887,11 @@ greet()
 def method_decorator(func):
     def wrapper(self, *args, **kwargs): #self is there because of the class
         print("Before method execution")
-        res = func(self, *args, **kwargs) # "*arg" and "*kwargs" arent doing anything in this case but are placement holders
+        res = func(self, *args, **kwargs) #"*kwargs" arent doing anything in this case but are placement holders "*args" is a required placement
         print("After method execution")
         return res
     return wrapper
-
+#you can have as many as you like *args and **kwargs.
 class MyClass:
     @method_decorator #this means the function below is ran through the decorator as a parameter
     def say_hello(self):
