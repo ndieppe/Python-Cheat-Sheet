@@ -734,7 +734,7 @@ print("Integer Array after insertion:", *a) #_> Integer Array before insertion: 
 # Magic methods is the same as Dunder methods (double underscodre) as seen above there is __init_ and __main__ and _str__ etc.
 # these methods allow for behavoirs of objects to be defined/customised
 
-#* Example 1:
+#* Example of magic methods:
 class student:
     def __init__(self, name, grade): #this is initialised as soon as class is used
         self.name = name
@@ -753,7 +753,15 @@ class student:
         return f"added together their grade is: {self.grade + other.grade}"
     
     def __contains__(self, keyword): #checks if a keyword is in the name of the student (returns boolean)
-        return keyword in self.name
+        return keyword in self.name #this could also have "or keyword in self.school" if this file had that attribute
+    
+    def __getitems__(self, key): #allows for the object to be indexed and then the value of the key to be returned
+        if key == "name":
+            return self.name
+        elif key == "grade":
+            return self.grade
+        else:
+            return f"the key {key} is not valid"
     
 student1 = student("Nathan", 9)
 student2 = student("Ben", 8)
@@ -762,7 +770,8 @@ print(student1 == student2) #-> False
 print(student1 > student2) #-> True
 print(student1 + student2) #-> 17
 print("Nathan" in student1) #-> True
-
+print(student1["name"]) #-> Nathan
+print(student2["grade"]) #-> 8
 
 
 
