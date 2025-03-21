@@ -730,6 +730,37 @@ print("Integer Array after insertion:", *a) #_> Integer Array before insertion: 
 #* for more info use this link: https://www.geeksforgeeks.org/python-arrays/
 
 
+#! Python Magic Methods:
+# Magic methods is the same as Dunder methods (double underscodre) as seen above there is __init_ and __main__ and _str__ etc.
+# these methods allow for behavoirs of objects to be defined/customised
+
+#* Example 1:
+class student:
+    def __init__(self, name, grade): #this is initialised as soon as class is used
+        self.name = name
+        self.grade = grade
+
+    def __str__(self): #this is the string returned when the object is printed
+        return f"{self.name} has a grade of {self.grade}"
+    
+    def __eq__(self, other): #returns a boolean result to whether the two objects are equal
+        return self.name == other.name
+    
+    def __gt__(self, other): #gt (shorter for greater than) returns a boolean result to whether the first object is greater than the second
+        return self.grade > other.grade #there is also __lt__ (short for less than) that can be used
+    
+student1 = student("Nathan", 9)
+student2 = student("Ben", 8)
+print(student1) #-> Nathan has a grade of 9
+print(student1 == student2) #-> False
+print(student1 > student2) #-> True
+
+
+
+
+
+    
+
 #! Python decorators:
 # a decorator is a design pattern in Python that allows a user to add new functionality to an existing object without modifying its structure
 # Decorators are often used in scenarios such as logging, authentication and memorization, allowing us to add additional functionality to 
@@ -750,7 +781,6 @@ greet()
 #-> Before calling the function.
 #-> Hello, World!
 #-> After calling the function.
-#TODO: New from here
 
 #* Program to square numbers using higher order functions
 def fun(f, x): #a higher order function that takes a function and a number as arguments
@@ -807,7 +837,7 @@ greet()
 def method_decorator(func):
     def wrapper(self, *args, **kwargs): #self is there because of the class
         print("Before method execution")
-        res = func(self, *args, **kwargs)
+        res = func(self, *args, **kwargs) # "*arg" and "*kwargs" arent doing anything in this case but are placement holders
         print("After method execution")
         return res
     return wrapper
