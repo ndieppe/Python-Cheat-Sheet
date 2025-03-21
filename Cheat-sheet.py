@@ -614,10 +614,10 @@ rizz: bool = True #no joke AI auto put this down, it fr just knows
 
 #* list comprehension
 # list comprehension offers a shorter syntax when you want to create a new list based on the values of an existing list.
-people: list[str] = ["Nathan", "Rohan", "Kai", "Harrison", "Ben"]
-long_names: list[str] = [name for name in people if len(name) > 4] #-> ["Nathan", "Rohan", "Harrison"]
+people: list[str] = ["Nathan", "Barnabus", "Kai", "Harrison", "Ben"]
+long_names: list[str] = [name for name in people if len(name) > 4] #-> ["Nathan", "Barnabus", "Harrison"]
 #this can also be done directly into a print statement
-print([name for name in ["Nathan", "Rohan", "Kai", "Ben", "Harrison"] if len(name) > 4]) #-> ["Nathan", "Rohan", "Harrison"]
+print([name for name in ["Nathan", "Barnabus", "Kai", "Ben", "Harrison"] if len(name) > 4]) #-> ["Nathan", "Barnabus", "Harrison"]
 
 
 #! Python OS module:
@@ -750,7 +750,43 @@ greet()
 #-> Before calling the function.
 #-> Hello, World!
 #-> After calling the function.
-#TODO: send from here on to rohan.
+#TODO: New from here
+
+#* Program to square numbers using higher order functions
+def fun(f, x): #a higher order function that takes a function and a number as arguments
+    return f(x)
+
+def square(x): #a simple function to square a number
+    return x * x
+
+res = fun(square, 5)
+print(res) #-> 25   
+
+#* Functions as first class objects:
+#? This means: functions can be assigned as variables, passed as arguments, returned from other functions, and stored in data structures.
+
+#* Assigning a function to a variable
+# Assigning a function to a variable
+def greet(n):
+    return f"Hello, {n}!"
+say_hi = greet  # Assign the greet function to say hello
+print(say_hi("Alice"))  #-> Hello, Alice!
+
+#* Passing a function as an argument: (uses program from above)
+def apply(f, v):
+    return f(v)
+
+res = apply(say_hi, "Bob")
+print(res)  #-> Hello, Bob!
+
+#* Returning a function from another function
+def make_mult(f):
+    def mult(x):
+        return x * f
+    return mult
+
+dbl = make_mult(2)
+print(dbl(5))  #-> : 10
 
 #* source https://www.geeksforgeeks.org/decorators-in-python/
 
