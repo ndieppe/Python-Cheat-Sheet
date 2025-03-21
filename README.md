@@ -21,7 +21,7 @@ This Program runs 100% on just python and utilising both built in and external m
 How to clone your project
 
 ```bash
-git clone https://github.com/ndieppe/Python-Cheat-Sheet
+git clone https://github.com/ndieppe/Python-Cheat-Sheet.git
 ```
  ![Untitled](https://github.com/user-attachments/assets/8dd229b9-1983-46f6-8b0f-0b6f4032f173)
 
