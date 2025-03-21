@@ -777,7 +777,7 @@ print(student2["grade"]) #-> 8
 
 #!@property decorator:
 #This is a built in decorator in python that allows for a method to be accessed as an attribute. Gives a getter, setter and deleter method.
-
+# this logic is added when you read or write or delete attributes of an object
 #* Example of @property decorator:
 class Rectangle:
     def __init__(self, length, width):
