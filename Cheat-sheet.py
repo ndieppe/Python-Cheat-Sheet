@@ -869,19 +869,19 @@ dbl = make_mult(2)
 print(dbl(5))  #-> : 10
 
 #* Function Decorators:
-#? this first one is the same program as the one above.
-def simple_decorator(func):
-    def wrapper():
-        print("Before calling the function.")
-        func()
-        print("After calling the function.")
+def add_sprinkles(func):
+    def wrapper(): #this is required so that this function is called everytime a decorated get)ice_cream is called not when the decorator appears
+        print("*You add sprinkles*")
+        func() #this is the print statement "Here is your ice cream!"
     return wrapper
 
-@simple_decorator #short hand for greet = simple_decorator(greet) 
-def greet():
-    print("Hello, World!")
+@add_sprinkles
+def get_ice_cream():
+    print("Here is your ice cream!")
 
-greet()
+if name == "__main__":
+    get_ice_cream()
+
 
 #* Method decorators:
 def method_decorator(func):
@@ -899,7 +899,8 @@ class MyClass:
 
 obj = MyClass()
 obj.say_hello()
-#TODO: WATCH A VIDEO on the above to understand it better, and finnish decorators
+
+
 
 
 #* source https://www.geeksforgeeks.org/decorators-in-python/
