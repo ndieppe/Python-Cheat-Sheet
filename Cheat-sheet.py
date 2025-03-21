@@ -749,12 +749,19 @@ class student:
     def __gt__(self, other): #gt (shorter for greater than) returns a boolean result to whether the first object is greater than the second
         return self.grade > other.grade #there is also __lt__ (short for less than) that can be used
     
+    def __add__(self, other): #adding the grades of two students
+        return f"added together their grade is: {self.grade + other.grade}"
+    
+    def __contains__(self, keyword): #checks if a keyword is in the name of the student (returns boolean)
+        return keyword in self.name
+    
 student1 = student("Nathan", 9)
 student2 = student("Ben", 8)
 print(student1) #-> Nathan has a grade of 9
 print(student1 == student2) #-> False
 print(student1 > student2) #-> True
-
+print(student1 + student2) #-> 17
+print("Nathan" in student1) #-> True
 
 
 
