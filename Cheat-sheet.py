@@ -769,7 +769,7 @@ print(res) #-> 25
 # Assigning a function to a variable
 def greet(n):
     return f"Hello, {n}!"
-say_hi = greet  # Assign the greet function to say hello
+say_hi = greet  # Assign the greet function to say_hi
 print(say_hi("Alice"))  #-> Hello, Alice!
 
 #* Passing a function as an argument: (uses program from above)
@@ -780,13 +780,47 @@ res = apply(say_hi, "Bob")
 print(res)  #-> Hello, Bob!
 
 #* Returning a function from another function
-def make_mult(f):
+def make_mult(f):  # makes a multiplier function for each given factor
     def mult(x):
         return x * f
     return mult
 
 dbl = make_mult(2)
 print(dbl(5))  #-> : 10
+
+#* Function Decorators:
+#? this first one is the same program as the one above.
+def simple_decorator(func):
+    def wrapper():
+        print("Before calling the function.")
+        func()
+        print("After calling the function.")
+    return wrapper
+
+@simple_decorator #short hand for greet = simple_decorator(greet) 
+def greet():
+    print("Hello, World!")
+
+greet()
+
+#* Method decorators:
+def method_decorator(func):
+    def wrapper(self, *args, **kwargs): #self is there because of the class
+        print("Before method execution")
+        res = func(self, *args, **kwargs)
+        print("After method execution")
+        return res
+    return wrapper
+
+class MyClass:
+    @method_decorator #this means the function below is ran through the decorator as a parameter
+    def say_hello(self):
+        print("Hello!")
+
+obj = MyClass()
+obj.say_hello()
+#TODO: WATCH A VIDEO on the above to understand it better, and finnish decorators
+
 
 #* source https://www.geeksforgeeks.org/decorators-in-python/
 
