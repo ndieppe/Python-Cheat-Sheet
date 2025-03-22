@@ -918,3 +918,15 @@ obj.say_hello()
 # An iterator is an object that can be iterated upon, meaning that you can go through all the values.
 # in python this is done through "__iter__()" and "__next__()" methods
 
+# lists, tuples, dictionaries and sets are iterable objects
+
+#* Example 1
+mytuple = ("apple", "banana", "cherry")
+myit = iter(mytuple)
+
+print(next(myit)) #-> apple
+print(next(myit)) #-> banana
+print(next(myit)) #-> cherry
+
+
+
