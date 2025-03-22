@@ -910,10 +910,11 @@ obj = MyClass()
 obj.say_hello()
 
 
-
-
 #* source https://www.geeksforgeeks.org/decorators-in-python/
 
-#TODO: function decrators
-#TODO: iterators "__next__(), __iter__()"
+
+#* Function iterators:
+# An iterator is an object that contains a countable number of values.
+# An iterator is an object that can be iterated upon, meaning that you can go through all the values.
+# in python this is done through "__iter__()" and "__next__()" methods
 
