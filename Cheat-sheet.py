@@ -622,7 +622,7 @@ print([name for name in ["Nathan", "Barnabus", "Kai", "Ben", "Harrison"] if len(
 
 #! Python OS module:
 #* The OS module in python provides functions for interacting with the operating system.
-# Source: https://www.w3schools.com/python/module_os.asp?ref=escape.tech
+# sauce: https://www.w3schools.com/python/module_os.asp?ref=escape.tech
 import os
 
 #* get list of all working attributes and methods (this works in all modules)
@@ -731,7 +731,7 @@ print("Integer Array after insertion:", *a) #_> Integer Array before insertion: 
 
 
 #! Python Magic Methods:
-# Magic methods is the same as Dunder methods (double underscodre) as seen above there is __init_ and __main__ and _str__ etc.
+# Magic methods is the same as Dunder methods (double underscodre) as seen above there is __init__ and __main__ and _str__ etc.
 # these methods allow for behavoirs of objects to be defined/customised
 
 #* Example of magic methods:
@@ -875,21 +875,21 @@ def add_sprinkles(func):
         func(*args, **kwargs) #this is the print statement "Here is your ice cream!"
     return wrapper
 
-def add_source(func):
+def add_sauce(func):
     def wrapper(*args, **kwargs): #args = arguments, kwargs = keyword arguments
-        print("*You add a source*")
+        print("*You add a sauce*")
         func(*args, **kwargs) #this is done so any number of args and kwargs can be passed through
     return wrapper
 
 @add_sprinkles #this becomes shorthand for get_ice_cream = add_sprinkles(get_ice_cream)
-@add_source #more than one decorator can be applied
+@add_sauce #more than one decorator can be applied
 def get_ice_cream(flavour): #this is brought in as a paramer "func" 
     print(f"Here is your {flavour} ice cream!")
 
 if __name__ == "__main__":
     get_ice_cream("vanilla")
 #-> *You add sprinkles*
-#-> *You add a source*
+#-> *You add a sauce*
 #-> Here is your ice cream! (This is only printed once not twice)
 
 #* Method decorators:
@@ -910,7 +910,7 @@ obj = MyClass()
 obj.say_hello()
 
 
-#* source https://www.geeksforgeeks.org/decorators-in-python/
+#* sauce https://www.geeksforgeeks.org/decorators-in-python/
 
 
 #* Function iterators:
